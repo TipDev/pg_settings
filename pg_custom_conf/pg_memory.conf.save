@@ -1,0 +1,54 @@
+shared_buffers = 8GB
+#huge_pages = try			# on, off, or try
+#temp_buffers = 8MB			# min 800kB
+#max_prepared_transactions = 0		# zero disables the feature
+					# Caution: it is not advisable to set max_prepared_transactions nonzero unless
+					# you actively intend to use prepared transactions.
+work_mem = 16MB				
+maintenance_work_mem = 256MB
+autovacuum_work_mem = 64MB		# min 1MB, or -1 to use maintenance_work_mem
+#max_stack_depth = 2MB			# min 100kB
+dynamic_shared_memory_type = posix	# the default is the first option
+					# supported by the operating system:
+                 					#   posix
+					#   sysv
+					#   windows
+					#   mmap
+					# use none to disable dynamic shared memory
+
+# - Disk -
+
+#temp_file_limit = -1			# limits per-session temp file space
+					# in kB, or -1 for no limit
+
+# - Kernel Resource Usage -
+
+#max_files_per_process = 1000		# min 25
+
+# - Cost-Based Vacuum Delay -
+
+vacuum_cost_delay = 100			# 0-100 milliseconds
+#vacuum_cost_page_hit = 1		# 0-10000 credits
+#vacuum_cost_page_miss = 10		# 0-10000 credits
+#vacuum_cost_page_dirty = 20		# 0-10000 credits
+vacuum_cost_limit = 10000		# 1-10000 credits
+
+# - Background Writer -
+
+bgwriter_delay = 200ms			# 10-10000ms between rounds
+bgwriter_lru_maxpages = 200		# 0-1000 max buffers written/round
+bgwriter_lru_multiplier = 5.0		# 0-10.0 multipler on buffers scanned/round
+
+# - Asynchronous Behavior -
+
+#effective_io_concurrency = 1		# 1-1000; 0 disables prefetching
+#max_worker_processes = 8
+
+# - Extensions -
+
+#shared_preload_libraries = 'pg_stat_statements, pg_prewarm, pg_buffercache'
+
+# - Query planed cost -
+
+effective_cache_size = 12GB
+
